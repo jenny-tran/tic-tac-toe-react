@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Square from './Square';
-
+import { calculateWinner } from '../helpers';
 
 class Board extends React.Component {
     renderSquare(i) {
-        return <Square />;
+        return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
     }
+
     render() {
-        const status = 'Next player: X';
         return (
             <div>
-                <div className="status">{status}</div>
                 <div className="board-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
